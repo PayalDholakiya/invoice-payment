@@ -59,9 +59,16 @@ export default {
   },
   methods: {
     add() {
-      {
+      if (
+        this.formData.typetype == '' ||
+        this.formData.form == '' ||
+        this.formData.details == '' ||
+        this.formData.amount == ''
+      ) {
+        alert('all the filed are required.')
+      } else {
         this.arrayData.push({ ...this.formData })
-        this.formData.type = ''
+        this.formData.type = 'invoice'
         this.formData.form = ''
         this.formData.details = ''
         this.formData.amount = ''
@@ -75,15 +82,19 @@ h1 {
   color: fuchsia;
 }
 .form-data {
-  padding-top: 3px;
-  background-color: gainsboro;
-  border: 1px solid gray;
-  border-radius: 5px;
+  height: 20vh;
+  background-color: rgb(204, 203, 203);
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  padding-left: 10%;
+  padding-right: 10%;
   margin-left: 10%;
   margin-right: 10%;
 }
 
 .add button {
+  height: 30px;
   width: 90px;
   background-color: magenta;
   border-radius: 5px;
@@ -91,5 +102,18 @@ h1 {
 .add {
   padding-top: 2px;
   margin-left: 5%;
+}
+@media screen and (max-width: 1063px) {
+  .form-data {
+    display: flex;
+    flex-direction: column;
+    margin-left: 20%;
+    margin-right: 20%;
+    padding-top: 20px;
+  }
+  .add button {
+    height: 30px;
+    width: 90px;
+  }
 }
 </style>
